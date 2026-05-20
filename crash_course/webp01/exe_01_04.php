@@ -1,6 +1,4 @@
-// exe04.php
-
 <?php
-    print "Hello, World\n";
+$name = "Java";
+print "My name is " . $name . "\n";
 ?>
-
