@@ -16,6 +16,7 @@ function usage() {
     echo "-d    : Delete a file."
     echo "-g    : Create a generic php file."
     echo "-h    : Display the help format in this file."
+    echo "-i    : interractive mode to try out php commands"
     echo "-r    : Compile and Run a php file"
 }
 
@@ -63,7 +64,7 @@ if [[ "${#}" != 2 ]]; then
     usage
 fi
 
-optstring="d:g:r:R:h"
+optstring="d:g:r:R:i:h"
 
 while getopts "${optstring}" opt; do
     case "${opt}" in
@@ -100,7 +101,9 @@ while getopts "${optstring}" opt; do
             filename="${OPTARG}"
             php "${filename}"
         ;;
-
+        i)
+            php -a
+        ;;
         *.*);;
     esac
 done
