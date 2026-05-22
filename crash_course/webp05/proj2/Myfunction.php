@@ -25,4 +25,12 @@ function printStars(int $numStars, string $spacer): void
     print str_pad($starsString, $lineLength, $spacer, STR_PAD_BOTH) . PHP_EOL;
 }
 
+function printTree(string $spacer): void
+{
+    for ($i = 1; $i <= 13; $i += 4) {
+        printStars($i, $spacer);
+    }
+    printStars(1, $spacer);
+}
+
 ?>
