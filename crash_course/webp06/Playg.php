@@ -12,4 +12,28 @@ while (true) {
     }
     print "You entered: $input\n";
 }
+
+$message = "Go to the market and buy the following: ";
+print "$message\n";
+$listLength = 3;
+for ($i = 0; $i < $listLength; $i++) {
+    $item = trim(readline("Enter item " . ($i + 1) . ": "));
+    if ($i == 0) {
+        $message = joinStrings($message, $item);
+    } elseif ($i == $listLength - 1) {
+        $message = joinStrings($message, $item, delimiter: ", and ");
+    } else {
+        $message = joinStrings($message, $item, delimiter: ", ");
+    }
+}
+
+print $message . "\n";
+
+function joinStrings(
+    string $str1,
+    string $str2,
+    string $delimiter = " ",
+): string {
+    return $str1 . $delimiter . $str2;
+}
 ?>
