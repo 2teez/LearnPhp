@@ -21,4 +21,8 @@ var_dump($result);
 printTree("/");
 printTree(" ");
 
+// calling the printConvertedInt function
+$result = printConvertedInt(stringToInt("one"));
+print $result . PHP_EOL;
+
 ?>
