@@ -17,4 +17,8 @@ printStars(1, $spacer);
 $result = printStars(1, $spacer);
 var_dump($result);
 
+// calling the printTree function
+printTree("/");
+printTree(" ");
+
 ?>
