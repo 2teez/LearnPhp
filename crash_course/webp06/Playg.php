@@ -1,4 +1,13 @@
 <?php
+// for loop with continue
+for ($i = 1; $i <= 21; $i++) {
+    if (!multipleOf3($i)) {
+        continue;
+    }
+    print "$i ";
+}
+print PHP_EOL;
+
 do {
     $password = trim(readline("Enter new password (atleast 8 characters): "));
 } while (strlen($password) < 8);
@@ -6,7 +15,7 @@ do {
 print "Password accepted: $password\n";
 // using a while loop
 while (true) {
-    $input = trim(readline("Enter input: "));
+    $input = trim(readline("Enter input (type 'exit' or 'quit' to stop): "));
     if ($input === "exit" || $input === "quit") {
         break;
     }
@@ -36,4 +45,10 @@ function joinStrings(
 ): string {
     return $str1 . $delimiter . $str2;
 }
+
+function multipleOf3(int $of): bool
+{
+    return $of % 3 === 0;
+}
+
 ?>
