@@ -38,11 +38,10 @@ function create_file() {
     if [[ -e "${filename}" ]]; then
         echo "${filename}" "exist."
         printf "Do you want to overwrite it? [y|n]: "
-        while read ans; do
+        while read -r -e ans; do
             case "${ans,,}" in
                 y)
-                echo "// ${filename}" > "${filename}"
-                printf "${FILE}" >> "${filename}"
+                echo "${FILE}" > "${filename}"
                 echo "${filename}" "is overwritten."
                 break
                 ;;
@@ -69,11 +68,11 @@ while getopts "${optstring}" opt; do
     case "${opt}" in
 
         d)
-        filename="${OPTARG,,}"
-        for file in $(ls); do
+        filename="${OPTARG}"
+        file_extension="${filename##*.}"
+        for file in *."${file_extension}"; do
             if [[ "${filename}" = "${file}" ]]; then
-                printf "Do you want to delete ${file}? [y|n]: "
-                while read ans; do
+                while read -r -e -p "Do you want to delete ${file}? [y|n]: " ans; do
                     case "${ans,,}" in
                         y) rm "${file}"
                            exit 0;;
@@ -88,7 +87,7 @@ while getopts "${optstring}" opt; do
 
         ;;
         g)
-          filename="${OPTARG,,}"
+          filename="${OPTARG^}"
           create_file "${filename}"
           ./"${0}" -r "${filename}"
         ;;
