@@ -14,4 +14,15 @@ function whichIsLarger(int $a, int $b): int
     }
     return $result;
 }
+
+function printStars(int $numStars, string $spacer): void
+{
+    if (empty($spacer)) {
+        return;
+    }
+    $lineLength = 20;
+    $starsString = str_repeat("*", $numStars);
+    print str_pad($starsString, $lineLength, $spacer, STR_PAD_BOTH) . PHP_EOL;
+}
+
 ?>
