@@ -26,4 +26,19 @@ END;
 
 print $anotherMessage;
 
+echo "=====================\n";
+echo "Using nowdoc\n";
+echo "=====================\n";
+
+$nowdocMessage = <<<'END'
+<?php
+    $name = 'clojure';
+    echo $name . ' is the a functional programming language';
+    echo "\nLoved by java people...\n";
+?>
+
+END;
+
+print $nowdocMessage;
+
 ?>
