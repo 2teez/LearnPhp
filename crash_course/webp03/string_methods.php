@@ -14,5 +14,25 @@ print "The length of the string: " . strlen($str) . "\n";
 
 print 'Count number of the "at": ' . substr_count($str, "at") . "\n";
 
+// using str_replace(), substr(), strstr() or stristr()
+$wrd = "Java didn't see, JavaScript coming...";
+print "Using substr(): " . substr($wrd, 16) . "\n";
+print "Using substr(): " .
+    substr($wrd, strpos($wrd, "JavaScript"), strlen("JavaScript")) .
+    "\n";
+print "Using strstr(): " . strstr($wrd, "JavaScript") . "\n";
+print "Using stristr(): " . stristr($wrd, "javascript") . "\n";
+
+// using str_replace() an d substr_replace()
+$wrd = "Java didn't see, JavaScript coming...";
+print "Using str_replace(): " . str_replace("JavaScript", "PHP", $wrd) . "\n";
+print "Using substr_replace(): " .
+    substr_replace(
+        $wrd,
+        "PHP",
+        strpos($wrd, "JavaScript"),
+        strlen("JavaScript"),
+    ) .
+    "\n";
 
 ?>
