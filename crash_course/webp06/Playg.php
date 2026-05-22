@@ -4,4 +4,12 @@ do {
 } while (strlen($password) < 8);
 
 print "Password accepted: $password\n";
+// using a while loop
+while (true) {
+    $input = readline("Enter input: ");
+    if ($input === "exit" || $input === "quit") {
+        break;
+    }
+    print "You entered: $input\n";
+}
 ?>
