@@ -35,4 +35,28 @@ print "Using substr_replace(): " .
     ) .
     "\n";
 
+// removing spaces
+$wrd = "  Hello, World!  ";
+print "Using trim(): " . trim($wrd) . "\n";
+print "Using ltrim(): " . ltrim($wrd) . "\n";
+print "Using rtrim(): " . rtrim($wrd) . "\n";
+
+// using str_replace to remove tabs and newlines
+$wrd = "Hello,\n\tWorld!";
+print "Original: \n\t" . $wrd . "\n";
+print "Using str_replace(): " . str_replace(["\n", "\t"], "", $wrd) . "\n";
+
+$catSat = <<<EOT
+the
+    cat    sat
+    \t\t on    the
+mat
+
+EOT;
+print "Original: \n\t" . $catSat . "\n";
+print "Using str_replace(): " .
+    str_replace(["\n", "\t", "    "], " ", trim($catSat)) .
+    "\n";
+
+
 ?>
