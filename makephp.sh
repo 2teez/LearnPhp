@@ -54,7 +54,6 @@ function create_file() {
             esac
         done
     else
-        echo "// ${filename}" > "${filename}"
         echo "${FILE}" >> "${filename}"
     fi
 }
