@@ -1,5 +1,5 @@
-
 <?php
-    print "Hello, World\n";
-?>
+$name = "clojure";
+print $name . " is learning PHP";
 
+?>
