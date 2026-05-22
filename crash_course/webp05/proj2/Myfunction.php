@@ -33,4 +33,24 @@ function printTree(string $spacer): void
     printStars(1, $spacer);
 }
 
+function stringToInt(string $str): ?int
+{
+    return match ($str) {
+        "one" => 1,
+        "two" => 2,
+        "three" => 3,
+        "four" => 4,
+        "five" => 5,
+        "six" => 6,
+        default => null,
+    };
+}
+
+function printConvertedInt(?int $num): string
+{
+    return $num !== null
+        ? (string) $num
+        : "sorry no number conversion possible";
+}
+
 ?>
