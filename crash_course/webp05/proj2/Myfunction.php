@@ -33,7 +33,7 @@ function printTree(string $spacer): void
     printStars(1, $spacer);
 }
 
-function stringToInt(string $str): ?int
+function stringToInt(?string $str): ?int
 {
     return match ($str) {
         "one" => 1,
