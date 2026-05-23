@@ -30,6 +30,12 @@ fclose($fileHandler);
 // read it back
 print_r(file_get_contents($jsonEmployeeFile));
 print "\n";
+//
+$fileHandler = fopen($jsonEmployeeFile, "r");
+$content = fread($fileHandler, filesize($jsonEmployeeFile));
+print_r(json_decode($content, true));
+fclose($fileHandler);
+
 // delete the employee.json file
 unlink($jsonEmployeeFile);
 // delete the data directory
