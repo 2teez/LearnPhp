@@ -20,11 +20,24 @@ function usage() {
     echo "-r    : Compile and Run a php file"
 }
 
-# cpp start writeup
+# php start writeup
 FILE="
 <?php
     print \"Hello, World\n\";
+"
+
+HTML="
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<?php
+
 ?>
+</body>
+</html>
 "
 
 # creating a php file
@@ -62,7 +75,7 @@ if [[ "${#}" != 2 ]]; then
     usage
 fi
 
-optstring="d:g:r:R:i:h"
+optstring="d:g:r:R:i:l:h"
 
 while getopts "${optstring}" opt; do
     case "${opt}" in
@@ -93,6 +106,12 @@ while getopts "${optstring}" opt; do
         ;;
         h) usage
            exit 1
+        ;;
+        l)
+            filename="${OPTARG}"
+            file_extension="${filename##*.}"
+            [[ "${file_extension}" != "html" ]] && filename="${filename%.*}.html"
+            echo "${HTML}" > "${filename}"
         ;;
 
         r)
