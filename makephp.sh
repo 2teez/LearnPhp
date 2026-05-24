@@ -16,8 +16,9 @@ function usage() {
     echo "-d    : Delete a file."
     echo "-g    : Create a generic php file."
     echo "-h    : Display the help format in this file."
-    echo "-i    : interractive mode to try out php commands"
-    echo "-r    : Compile and Run a php file"
+    echo "-i    : interractive mode to try out php commands."
+    echo "-p    : create a php project directory with all the needed files."
+    echo "-r    : Compile and Run a php file."
 }
 
 # php start writeup
@@ -75,7 +76,7 @@ if [[ "${#}" != 2 ]]; then
     usage
 fi
 
-optstring="d:g:r:R:i:l:h"
+optstring="d:g:r:R:i:l:p:h"
 
 while getopts "${optstring}" opt; do
     case "${opt}" in
@@ -120,6 +121,14 @@ while getopts "${optstring}" opt; do
         ;;
         i)
             php -a
+        ;;
+        p)
+            project_name="${OPTARG}"
+            mkdir -p "${project_name}/public"
+            cd "${project_name}/public" || exit 1
+            create_file "index.php"
+            # make all the other files and directories
+            mkdir images css js
         ;;
         *.*);;
     esac
