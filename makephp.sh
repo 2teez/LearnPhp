@@ -28,8 +28,9 @@ FILE="
 "
 
 HTML="
-<!DOCTYPE html>
+<!DOCTYPE html lang=\"en\">
 <html>
+<meta charset=\"utf-8\">
 <head>
     <title></title>
 </head>
