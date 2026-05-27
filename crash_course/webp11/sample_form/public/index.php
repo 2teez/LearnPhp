@@ -5,7 +5,7 @@
     <title>Simple Form</title>
 </head>
 <body>
-    <form action="process.php" method="get">
+    <form action="process.php" method="POST">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name">
         <br><br>
