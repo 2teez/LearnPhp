@@ -30,15 +30,15 @@ FILE="
 HTML="
 <!DOCTYPE html lang=\"en\">
 <html>
-<meta charset=\"utf-8\">
-<head>
-    <title></title>
-</head>
-<body>
-<?php
+    <head>
+        <meta charset=\"utf-8\">
+        <title>${filename}</title>
+    </head>
+    <body>
+        <?php
 
-?>
-</body>
+        ?>
+    </body>
 </html>
 "
 
