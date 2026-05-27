@@ -13,6 +13,7 @@ function usage() {
     echo "Usage: ./${filename} <options> filename"
     echo
     echo "Avaliable Options:"
+    echo "-b:   : Create a Bootstrap 4 project directory."
     echo "-d    : Delete a file."
     echo "-g    : Create a generic php file."
     echo "-h    : Display the help format in this file."
@@ -27,17 +28,42 @@ FILE="
     print \"Hello, World\n\";
 "
 
-HTML="
-<!DOCTYPE html lang=\"en\">
-<html>
+# Bootstrap 4 HTML template
+BOOTSTRAP_HTML="
+<!DOCTYPE html>
+<html lang=\"en\">
     <head>
         <meta charset=\"utf-8\">
         <title>${filename}</title>
+        <link rel=\"stylesheet\"
+        href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap
+        .min.css\"  crossorigin=\"anonymous\">
     </head>
     <body>
         <?php
 
         ?>
+        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js\"></script>
+        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js\"
+            crossorigin=\"anonymous\"></script>
+    </body>
+</html>
+"
+
+
+HTML="
+<!DOCTYPE html>
+<html lang=\"en\">
+    <head>
+        <meta charset=\"utf-8\">
+        <title>${filename}</title>
+        <!--link rel=\"\" href=\"\"-->
+    </head>
+    <body>
+        <?php
+
+        ?>
+        <!--script src=\"\"></script-->
     </body>
 </html>
 "
@@ -77,10 +103,17 @@ if [[ "${#}" != 2 ]]; then
     usage
 fi
 
-optstring="d:g:r:R:i:l:p:h"
+optstring="b:d:g:r:R:i:l:p:h"
 
 while getopts "${optstring}" opt; do
     case "${opt}" in
+
+        b)
+            filename="${OPTARG}"
+            file_extension="${filename##*.}"
+            [[ "${file_extension}" != "html" ]] && filename="${filename%.*}.html"
+            echo "${BOOTSTRAP_HTML}" > "${filename}"
+        ;;
 
         d)
         filename="${OPTARG}"
