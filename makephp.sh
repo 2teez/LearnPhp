@@ -28,8 +28,40 @@ FILE="
     print \"Hello, World\n\";
 "
 
+# Bootstrap 5 HTML template
+BOOTSTRAP5_HTML="
+<!DOCTYPE html>
+<html lang=\"en\">
+    <head>
+    <!-- Required meta tags always come first -->
+    <meta charset=\"utf-8\" />
+    <meta
+        name=\"viewport\"
+        content=\"width=device-width, initial-scale=1\"/>
+        <title>${filename}</title>
+
+        <!-- Bootstrap CSS -->
+        <link
+            href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css\"
+            rel=\"stylesheet\"
+        >
+    </head>
+    <body>
+        <?php
+            echo \"Hello, World\n\";
+        ?>
+
+        <!-- Bootstrap JS. -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+        </script>
+    </body>
+</html>
+"
+
+
 # Bootstrap 4 HTML template
-BOOTSTRAP_HTML="
+BOOTSTRAP4_HTML="
 <!DOCTYPE html>
 <html lang=\"en\">
     <head>
@@ -122,7 +154,16 @@ while getopts "${optstring}" opt; do
             filename="${OPTARG}"
             file_extension="${filename##*.}"
             [[ "${file_extension}" != "html" ]] && filename="${filename%.*}.html"
-            echo "${BOOTSTRAP_HTML}" > "${filename}"
+
+            while read -r -e -p "Bootstrap Version [4 or 5]? " ans; do
+              case "$ans" in
+                4) echo "${BOOTSTRAP4_HTML}" > "${filename}"; exit 0;;
+                5) echo "${BOOTSTRAP5_HTML}" > "${filename}"; exit 0;;
+                *) printf "Can only use '4' for Bootstrap 4, and '5' for Bootstrap 5.\n"
+                continue
+                ;;
+              esac
+            done
         ;;
 
         d)
