@@ -34,17 +34,18 @@ BOOTSTRAP_HTML="
 <html lang=\"en\">
     <head>
     <!-- Required meta tags always come first -->
-    <meta charset=\"utf-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1,
-    shrink-to-fit=no\">
-    <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">
+    <meta charset=\"utf-8\" />
+    <meta
+        name=\"viewport\"
+        content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"
+    />
         <title>${filename}</title>
 
         <!-- Bootstrap CSS -->
-        <link rel=\"stylesheet\"
-        href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap
-        .min.css\"
-        crossorigin=\"anonymous\">
+        <link
+            rel=\"stylesheet\"
+            href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css\"
+        />
     </head>
     <body>
         <?php
@@ -52,9 +53,9 @@ BOOTSTRAP_HTML="
         ?>
 
         <!-- jQuery first, then Bootstrap JS. -->
-        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js\"></script>
-        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js\"
-            crossorigin=\"anonymous\"></script>
+        <script src=\"https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js\"></script>
+        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js\"></script>
+
     </body>
 </html>
 "
