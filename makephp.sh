@@ -35,9 +35,7 @@ BOOTSTRAP5_HTML="
     <head>
     <!-- Required meta tags always come first -->
     <meta charset=\"utf-8\" />
-    <meta
-        name=\"viewport\"
-        content=\"width=device-width, initial-scale=1\"/>
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
         <title>${filename}</title>
 
         <!-- Bootstrap CSS -->
@@ -67,10 +65,7 @@ BOOTSTRAP4_HTML="
     <head>
     <!-- Required meta tags always come first -->
     <meta charset=\"utf-8\" />
-    <meta
-        name=\"viewport\"
-        content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"
-    />
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />
         <title>${filename}</title>
 
         <!-- Bootstrap CSS -->
