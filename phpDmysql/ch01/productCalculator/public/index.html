@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Product Discount Calculator</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        >
+    </head>
+    <body>
+
+        <h1 class="display-1">Product Discount Calculator</h1>
+        <form action="displayDiscount.php" method="post">
+            <div id="data">
+                <label for="description">Product Description:</label>
+                <input type="text" id="description" name="description" required><br>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required><br>
+                <label for="discount">Discount:</label>
+                <input type="number" id="discount" name="discount" required><br>
+            </div>
+            <div id="buttons">
+                <label for="submit">&nbsp;</label>
+                <input type="submit" value="Calculate Discount">
+            </div>
+        </form>
+
+        <!-- Bootstrap JS. -->
+        <script
+            src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js>
+        </script>
+    </body>
+</html>
