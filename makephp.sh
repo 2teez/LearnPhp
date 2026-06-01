@@ -14,6 +14,7 @@ function usage() {
     echo
     echo "Avaliable Options:"
     echo "-b:   : Create a Bootstrap 4 project directory."
+    echo "-c    : Create a CSS file."
     echo "-d    : Delete a file."
     echo "-g    : Create a generic php file."
     echo "-h    : Display the help format in this file."
@@ -27,6 +28,14 @@ FILE="
 <?php
     print \"Hello, World\n\";
 "
+
+# CSS template
+CSS="
+* {
+
+}
+"
+
 
 # Bootstrap 5 HTML template
 BOOTSTRAP5_HTML="
@@ -140,7 +149,7 @@ if [[ "${#}" != 2 ]]; then
     usage
 fi
 
-optstring="b:d:g:r:R:i:l:p:h"
+optstring="b:c:d:g:r:R:i:l:p:h"
 
 while getopts "${optstring}" opt; do
     case "${opt}" in
@@ -159,6 +168,14 @@ while getopts "${optstring}" opt; do
                 ;;
               esac
             done
+        ;;
+
+        c)
+            filename="${OPTARG}"
+            file_extension="${filename##*.}"
+            [[ "${file_extension}" != "css" ]] && filename="${filename%.*}.css"
+            echo "${CSS}" > "${filename}"
+            exit 0
         ;;
 
         d)
