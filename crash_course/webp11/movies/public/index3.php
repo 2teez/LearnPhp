@@ -16,13 +16,13 @@
         <div class="row">
             <div class="col-lg-3 text-end py-3">
                 Hammer £19.99
-                <a href="show.php?id=102" class="btn btn-primaary">Details</a>
+                <a href="show.php?id=102" class="btn btn-outline-primary">Details</a>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-3 text-end py-3">
                 Bucket of Nails £9.99
-                <a href="show.php?id=115" class="btn btn-primaary">Details</a>
+                <a href="show.php?id=115" class="btn btn-outline-primary">Details</a>
             </div>
         </div>
         <!-- Bootstrap JS. -->
