@@ -1,4 +1,14 @@
-
+<?php
+if (!isset($principal)) {
+    $principal = "";
+}
+if (!isset($rate)) {
+    $rate = "";
+}
+if (!isset($years)) {
+    $years = "";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,18 +25,29 @@
     </head>
     <body class="p-2">
         <h1 class="display-1">Future Value Calculator</h1>
+        <?php if (!empty($errorMessage)) {
+            echo "<p class=\"text-danger\">" .
+                htmlspecialchars($errorMessage) .
+                "</p>";
+        } ?>
         <form action="DisplayResult.php" method="post">
             <div class="mb-3">
                 <label for="principal" class="form-label">Investment Amount</label>
-                <input type="number" step="any" id="principal" name="principal" required />
+                <input type="number" step="any" id="principal" name="principal" value="<?= htmlspecialchars(
+                    $principal,
+                ) ?>" required />
             </div>
             <div class="mb-3">
                 <label for="rate" class="form-label">Yearly Interest Rate</label>
-                <input type="number" step="any" id="rate" name="rate" required />
+                <input type="number" step="any" id="rate" name="rate" value="<?= htmlspecialchars(
+                    $rate,
+                ) ?>" required />
             </div>
             <div class="mb-3">
                 <label for="years" class="form-label">Number of Years</label>
-                <input type="number" id="years" name="years" required />
+                <input type="number" id="years" name="years" value="<?= htmlspecialchars(
+                    $years,
+                ) ?>" required />
             </div>
             <button type="submit" class="btn btn-primary">Calculate</button>
         </form>
