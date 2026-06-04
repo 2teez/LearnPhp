@@ -223,9 +223,13 @@ while getopts "${optstring}" opt; do
             project_name="${OPTARG}"
             mkdir -p "${project_name}/public"
             cd "${project_name}/public" || exit 1
-            create_file "index.php"
+            # create_file "index.php"
+            echo "${BOOTSTRAP5_HTML}" > "index.php"
+            echo "${BOOTSTRAP5_HTML}" > "${project_name%.*}.php"
             # make all the other files and directories
             mkdir images css js
+            touch css/main.css
+            touch js/main.js
         ;;
         *.*);;
     esac
