@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,9 +13,7 @@
         >
     </head>
     <body>
-        <?php
-            echo "Hello, World\n";
-        ?>
+        <?php echo "Hello, World\n"; ?>
 
         <!-- Bootstrap JS. -->
         <script
@@ -24,4 +21,3 @@
         </script>
     </body>
 </html>
-
