@@ -55,7 +55,7 @@ function validateEmail($emailAddress)
                         <?php endforeach; ?>
                     </ul>
                  </div>
-                 <?php else: ?>
+                 <?php elseif ($isSubmitted && $isValid): ?>
                  <div class="alert alert-success">
                      <p><?php
                      $presentAge = intval($age);
@@ -71,8 +71,8 @@ function validateEmail($emailAddress)
             <form method="post">
                 <div class="mb-3">
                     <label for="age">Age: </label>
-                    <input type="text" id="age" name="age" value="<?= htmlspecialchars(
-                        $age,
+                    <input type="number" id="age" name="age" value="<?= htmlspecialchars(
+                        (string) $age,
                     ) ?>" required>
                 </div>
                 <div class="mb-3">
