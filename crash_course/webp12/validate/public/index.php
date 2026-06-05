@@ -1,11 +1,19 @@
 <?php
+$isSubmitted = $_SERVER["REQUEST_METHOD"] === "POST";
+$isValid = true;
+$name = "";
 $errorMessage = "";
-if (!isset($_POST["name"])) {
-    $name = "";
+if ($isSubmitted) {
+    $name = filter_input(INPUT_POST, "name");
+    if (strlen($name < 3)) {
+        $isValid = false;
+        $errorMessage = "Invalid - name must contain at least 3 letters";
+    }
 }
 
-if (strlen($name) < 3) {
-    $errorMessage = "invalid - name must contain at least 3 letters.";
+if ($isSubmitted && $isValid) {
+    echo "Hello $name";
+    die();
 }
 ?>
 <!DOCTYPE html>
@@ -23,20 +31,25 @@ if (strlen($name) < 3) {
         >
     </head>
     <body class="p-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <span class="bg-dark text-white text-center fs-1">
-                        <?= htmlspecialchars($errorMessage) ?>
-                    </span>
+        <form  method="post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span class="bg-dark text-white text-center fs-1">
+                            <?php if ($isSubmitted && !$isValid): ?>
+                                <?= htmlspecialchars($errorMessage) ?>
+                                <?php elseif (empty($name)): ?>
+                                <?php echo ""; ?>
+                            <?php endif; ?>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <form action="validate.php" method="post">
+
                 <div class="row">
                     <div class="col-lg-2">
                         <input type="text" name="name" value="<?= htmlspecialchars(
                             $name,
-                        ) ?>" required>
+                        ) ?>">
                     </div>
                     <div class="col-lg-3">
                         <button type="submit" class="btn btn-outline-primary">Submit</button>
