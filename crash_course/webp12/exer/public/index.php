@@ -2,16 +2,23 @@
 $isSubmitted = $_SERVER["REQUEST_METHOD"] === "POST";
 $isValid = true;
 $errorMessage = [];
-$age = 0;
-$emailAddress = "";
-if ($isSubmitted) {
-    $age = intval(filter_input(INPUT_POST, "age", FILTER_VALIDATE_INT));
-    $emailAddress = filter_input(INPUT_POST, "email");
 
-    if ($age <= 0) {
+$age = "";
+$emailAddress = "";
+
+if ($isSubmitted) {
+    $age = filter_input(INPUT_POST, "age", FILTER_VALIDATE_INT);
+    $emailAddress = trim(filter_input(INPUT_POST, "email") ?? "");
+
+    if ($age === false) {
         $isValid = false;
-        $errorMessage[] = "Age can't be Zero, or Negative.";
-    } elseif (empty($emailAddress) || !validateEmail($emailAddress)) {
+        $errorMessage[] = "Age must be a valid integer.";
+    } elseif ($age <= 0) {
+        $isValid = false;
+        $errorMessage[] = "Age must be greater than zero.";
+    }
+
+    if (empty($emailAddress) || !validateEmail($emailAddress)) {
         $isValid = false;
         $errorMessage[] = "Invalid email address.";
     }
@@ -28,7 +35,7 @@ function validateEmail($emailAddress)
     <!-- Required meta tags always come first -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title></title>
+        <title>Age Validator</title>
 
         <!-- Bootstrap CSS -->
         <link
@@ -38,26 +45,29 @@ function validateEmail($emailAddress)
     </head>
     <body class="p-3">
         <div class="container">
-            <?php if ($isSubmitted && !$isValid) {
-                foreach ($errorMessage as $message) { ?>
-                    <div class="alert alert-danger">
-                        <ul>
+            <h1 class="mb-4 display-4">Age Validator</h1>
+            <div class="mb-3">
+                <?php if ($isSubmitted && !$isValid): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php foreach ($errorMessage as $message): ?>
                             <li><?= htmlspecialchars($message) ?></li>
-                        </ul>
-                    </div>
-            <?php }
-            } else {
-                 ?>
-                <div class="alert alert-success"><?php
-                $presentAge = $age;
-                $age = $presentAge + 1;
-                echo "My present Age is: " .
-                    htmlspecialchars($presentAge) .
-                    ". And My Next Age will be: " .
-                    htmlspecialchars($age);
-                ?></div>
-            <?php
-            } ?>
+                        <?php endforeach; ?>
+                    </ul>
+                 </div>
+                 <?php else: ?>
+                 <div class="alert alert-success">
+                     <p><?php
+                     $presentAge = intval($age);
+                     $age = $presentAge + 1;
+                     echo "My present age is " .
+                         $presentAge .
+                         " and my age next year will be " .
+                         $age;
+                     ?></p>
+                 </div>
+                 <?php endif; ?>
+            </div>
             <form method="post">
                 <div class="mb-3">
                     <label for="age">Age: </label>
